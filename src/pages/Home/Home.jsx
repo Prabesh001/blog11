@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
@@ -24,9 +24,14 @@ const Home = () => {
           <div key={item._id} className="bg-gray-100 p-5 mb-10">
             <h1 className="font-bold text-2xl mb-2">{item.title}</h1>
             <p className="my-3">{item.subTitle}</p>
-            <button className="text-white font-semibold bg-blue-600 hover:bg-blue-800 p-2 my-1 rounded">
+            <p className="my-3">{item._id}</p>
+
+            <Link
+              to={`/blogDetail/${item._id}`}
+              className="text-white font-semibold bg-blue-600 hover:bg-blue-800 p-2 my-1 rounded"
+            >
               Read More...
-            </button>
+            </Link>
           </div>
         ))}
       </div>
