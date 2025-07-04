@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const BlogDetail = () => {
   const params = useParams();
+
+  const navigate = useNavigate();
 
   const [blog, setBlog] = useState("");
 
@@ -18,6 +20,19 @@ const BlogDetail = () => {
     fetchBlog();
   }, []);
 
+  const handleDeleteClick = async () => {
+    const isConfirmed = confirm(
+      "Are you sure, Do you want to delete this Blog"
+    );
+
+    if (isConfirmed) {
+      await axios.delete(`http://localhost:4000/blog/${params.id}`);
+      alert("blog is deleted");
+
+      navigate("/");
+    }
+  };
+
   return (
     <div>
       <Navbar />
@@ -28,18 +43,18 @@ const BlogDetail = () => {
           <h1 className="font-bold text-xl mb-2">{blog.subTitle}</h1>
           <p className="my-3">{blog.description}</p>
           <Link
-            to="/"
+            to={`/updateBlog/${blog._id}`}
             className="text-white font-semibold bg-blue-600 hover:bg-blue-800 p-2 mx-6 rounded"
           >
             Edit blog
           </Link>
 
-          <Link
-            to={`/deleteBlog/${blog._id}`}
+          <button
+            onClick={handleDeleteClick}
             className="text-white font-semibold bg-blue-600 hover:bg-blue-800 p-2 my-1 rounded"
           >
             Delete Blog
-          </Link>
+          </button>
         </div>
       </div>
     </div>
