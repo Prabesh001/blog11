@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../../components/Navbar/Navbar";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -35,7 +34,6 @@ const BlogDetail = () => {
 
   return (
     <div>
-      <Navbar />
 
       <div className="flex flex-col p-5 lg:px-48 lg:py-11">
         <div className="bg-gray-100 p-5 mb-10">

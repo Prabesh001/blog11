@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../../components/Navbar/Navbar";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -49,7 +48,6 @@ const UpdateBlog = () => {
 
   return (
     <div>
-      <Navbar />
 
       <section className="flex-grow container mx-auto p-6">
         <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">

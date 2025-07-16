@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../../components/Navbar/Navbar";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -17,8 +16,6 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar />
-
       <div className="flex flex-col p-5 lg:px-48 lg:py-11">
         {blogs.map((item) => (
           <div key={item._id} className="bg-gray-100 p-5 mb-10">
